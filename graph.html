@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Graph</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/stylegraph.css">
+    <link type="text/css" rel="stylesheet" href="css/style3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <a href="#" class="logo">
+                <img src="images/prem.png">
+            </a>
+        </div>
+        <div class="col s12 m4 l9" id="time">
+            <span id="dateandtime">  
+            </span>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col m3 s12 button" style="margin-top: 50px;">
+            <a class="waves-effect waves-light btn lime darken-3 white-text" href="table.html">Table</a>
+            <a class="waves-effect waves-light btn red darken-3 white-text" href="dashboard.html">Home</a>
+        </div>
+        <div class="col m9 s12">
+            <p class="title">Goalkeeper Saves per Game</p>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <script>
+        var dt = new Date();
+        document.getElementById("dateandtime").innerHTML = dt.toLocaleString();
+    </script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var requestOptions = {
+            method: "GET",
+            redirect: "follow",
+        };
+        fetch("graph.php", requestOptions).then((response) => response.json()).then((result) => {
+            console.log(result);
+            let spg = [];
+            result.data.forEach((element) => {
+                spg.push(element["spg"]);
+            });
+            let name = [];
+            result.data.forEach((element) => {
+                name.push(element["name"]);
+            })
+            
+            const labels = name;
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Premier League 21/22',
+                    data: spg,
+                    backgroundColor: [
+                        'violet'
+                    ],
+                    borderColor: [
+                        'violet'
+                    ],
+                    borderWidth: 2
+                }]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            };
+
+            var myChart = new Chart(document.getElementById("myChart"), config)
+        })
+        .catch((error) => console.log("error", error));
+    </script>
+
+</body>
+
+</html>

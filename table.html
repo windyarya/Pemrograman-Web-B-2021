@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Table | Premier League 2021/2022 Saves</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="css/style3.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="icon" type="image/png" href="images/prem.png">
+    </head>
+    <body>
+        <div class="row">
+            <div class="col s12 m4 l3">
+                <a href="#" class="logo">
+                    <img src="images/prem.png">
+                </a>
+            </div>
+            <div class="col s12 m4 l9" id="time">
+                <span id="dateandtime">
+                    <script>
+                        var dt = new Date();
+                        document.getElementById("dateandtime").innerHTML = dt.toLocaleString();
+                    </script>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m3 s12">
+                <div class="button">
+                    <a class="waves-effect waves-light btn lime darken-3 white-text" href="graph.html">Graph</a>
+                    <a class="waves-effect waves-light btn red darken-3 white-text" href="index.html">Home</a>
+                </div>
+            </div>
+            <div class="col m9 s12" style="display: flex; justify-content: center;">
+                <table class="stripped highlight">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Club</th>
+                            <th>Games</th>
+                            <th>Saves</th>
+                            <th>Saves/Game</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-saves">
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script>
+            var requestOptions = {
+                method: "GET",
+                redirect: "follow",
+            }
+            
+            const tbodyData = document.querySelector(".tbody-saves");
+            fetch("table.php", requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                result.data.gk.forEach((element, index) => {
+                    const trEl = document.createElement("tr");
+                    const tdNoEl = document.createElement("td");
+                    const tdNameEl = document.createElement("td");
+                    const tdClubEl = document.createElement("td");
+                    const tdGamesEl = document.createElement("td");
+                    const tdSavesEl = document.createElement("td");
+                    const tdSpGEl = document.createElement("td");
+                    tdNoEl.innerText = index + 1;
+                    tdNameEl.innerText = element.Name;
+                    tdClubEl.innerText = element.Club;
+                    tdGamesEl.innerText = element.Games;
+                    tdSavesEl.innerText = element.Save;
+                    tdSpGEl.innerText = element.savespergame;
+                    trEl.append(tdNoEl, tdNameEl, tdClubEl, tdGamesEl, tdSavesEl, tdSpGEl);
+                    tbodyData.append(trEl);
+                });
+            })
+            .catch((error) => console.log("error", error));
+        </script>
+    </body>
+</html>

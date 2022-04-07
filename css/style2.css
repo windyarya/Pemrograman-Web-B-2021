@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.logo img {
+    width: 100px;
+    height: 110px;
+    display: block;
+}
+
+img {
+    margin: auto;
+}
+
+#time {
+    text-align: right;
+    vertical-align: middle;
+    top: auto;
+    margin-top: 40px;
+}
+
+th {
+    background-color: violet;
+}
+
+th:nth-child(1) {
+    border-radius: 15px 0 0 0;
+}
+
+th:nth-child(6) {
+    border-radius: 0 15px 0 0;
+}
+
+td, tr, th {
+    text-align: center;
+}
+
+td:nth-child(2), th:nth-child(2), td:nth-child(3), th:nth-child(3) {
+    text-align: left;
+}
+
+.mobil {
+    text-align: center;
+    margin-top: 70px;
+}
+
+.shape {
+    width: 90px;
+    height: 45px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.one {
+    background-color: blue;
+}
+
+.two {
+    background-color: green;
+}
+
+.button {
+    cursor: pointer;
+    text-align: center;
+    margin-top: 30px;
+    font-size: large;
+}
+
+.button a {
+    display: block;
+    width: 95px;
+    height: 40px;
+    border-radius: 20px;
+    color: black;
+}
+
+.button a:nth-child(1) {
+    border: none;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: greenyellow;
+}
+
+.button a:nth-child(2) {
+    border: none;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: rgb(47, 196, 255);
+}
+
+.button a:nth-child(3) {
+    border: none;
+    margin: auto;
+    background-color: rgb(255, 47, 47);
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+@media only screen and (max-width: 600px) {
+    #time {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    a img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 80px;
+    overflow-x: hidden;
+}
+
+a img {
+    width: 150px;
+    height: 100px;
+    display: block;
+}
+
+.row .col.s6 {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.button {
+    width: fit-content;
+    height: 50px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid #002147;
+    cursor: pointer;
+    font-size: large;
+    color: white;
+    background-color: #002147;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: #002147;
+}
+
+.dash-button {
+    width: fit-content;
+    height: 50px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid #002147;
+    cursor: pointer;
+    font-size: large;
+    color: white;
+    background-color: #002147;
+}
+
+.dash-button:hover {
+    background-color: transparent;
+    color: #002147;
+}
+
